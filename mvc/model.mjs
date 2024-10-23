@@ -10,10 +10,10 @@ const settings = [
             type: "radio",
             options: [
                 `blurb (<280 characters)`,
-                "poem",
-                "haiku",
                 "short piece (<1000 words)",
                 "long piece (>1000 words)",
+                "poem",
+                "haiku",
             ],
         },
     },

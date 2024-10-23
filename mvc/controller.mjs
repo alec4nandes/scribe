@@ -59,12 +59,6 @@ function getFormData(formElem) {
     );
 }
 
-function aOrAn(value) {
-    const vowels = ["a", "e", "i", "o", "u"],
-        a = vowels.includes(value.toLowerCase().charAt(0)) ? "an " : "a ";
-    return a + value;
-}
-
 function joiner(values) {
     if (values.length === 1) {
         return values[0];
@@ -74,4 +68,10 @@ function joiner(values) {
     }
     const last = values.pop();
     return `${values.join(", ")}, and ${last}`;
+}
+
+function aOrAn(value) {
+    const vowels = ["a", "e", "i", "o", "u"],
+        a = vowels.includes(value.toLowerCase().charAt(0)) ? "an " : "a ";
+    return a + value;
 }
