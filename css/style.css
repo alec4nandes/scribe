@@ -1,10 +1,57 @@
 body {
-    margin: 50px 15px;
+    margin: 50px 10px;
     text-align: center;
 }
 
+main {
+    max-width: 660px;
+    width: 100%;
+    margin: auto;
+}
+
+form#settings {
+    section {
+        width: 100%;
+        display: flex;
+
+        &:not(.no-wrap) {
+            flex-wrap: wrap;
+
+            & > div {
+                min-width: 300px;
+            }
+        }
+
+        & > div {
+            background-color: #eee;
+            border: 1px solid #aaa;
+            flex: 1;
+            margin: 5px;
+
+            h3 {
+                background-color: #ddd;
+                margin: 0;
+                padding: 5px;
+            }
+
+            .options {
+                display: inline-flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 5px;
+                padding: 10px 5px;
+
+                label {
+                    display: inline-flex;
+                    gap: 2px;
+                }
+            }
+        }
+    }
+}
+
 #prompt {
-    border: 1px solid red;
-    margin: 30px auto;
+    background-color: #eee;
+    border: 1px solid #aaa;
     padding: 10px;
 }

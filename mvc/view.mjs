@@ -1,28 +1,49 @@
 function makeInputs(settings) {
-    return Object.entries(settings).map(makeSetting).join("");
+    return settings
+        .map(
+            (section) => `
+                <section ${
+                    Object.keys(section).includes("person")
+                        ? `class="no-wrap"`
+                        : ""
+                }>
+                    ${Object.entries(section).map(makeSetting).join("")}
+                </section>
+            `
+        )
+        .join("");
 }
 
 function makeSetting(entry) {
-    const [setting, { type, options }] = entry;
+    const [setting, { type, options, placeholder }] = entry;
     return `
         <div class="setting">
             <h3>${setting}</h3>
-            ${options
-                .map((option, i) =>
-                    makeRadio({ setting, type, option, isChecked: !i })
-                )
-                .join("")}
+            <div class="options">
+                ${options
+                    .map((option, i) =>
+                        makeInput({
+                            setting,
+                            type,
+                            option,
+                            placeholder,
+                            isChecked: !i,
+                        })
+                    )
+                    .join("")}
+            </div>
         </div>
     `;
 }
 
-function makeRadio({ setting, type, option, isChecked }) {
+function makeInput({ setting, type, option, placeholder, isChecked }) {
     return `
         <label>
             <input
                 type="${type}"
                 name="${setting}"
-                value="${option}"
+                ${option ? `value="${option}"` : ""}
+                ${placeholder ? `placeholder="${placeholder}"` : ""}
                 ${isChecked ? "checked" : ""}
             />
             ${option}
