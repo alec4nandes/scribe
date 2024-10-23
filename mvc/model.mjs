@@ -95,4 +95,12 @@ const settings = [
     },
 ];
 
-export { settings, pronouns };
+const types = settings.reduce((acc, section) => {
+    const result = Object.entries(section).reduce(
+        (acc, [name, { type }]) => ({ ...acc, [name]: type }),
+        {}
+    );
+    return { ...acc, ...result };
+}, {});
+
+export { settings, types, pronouns };
